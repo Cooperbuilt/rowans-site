@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <style>
+      body,
+      html {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        cursor: url('https://i.ibb.co/4PKx5Nk/Paper-Mario-icon.png'), auto;
+      }
+      .background {
+        background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ea231e53-e17c-4265-83b5-552457fc0505/dctzcs7-bb9c81d2-9f6d-4004-9d90-79e068e78754.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VhMjMxZTUzLWUxN2MtNDI2NS04M2I1LTU1MjQ1N2ZjMDUwNVwvZGN0emNzNy1iYjljODFkMi05ZjZkLTQwMDQtOWQ5MC03OWUwNjhlNzg3NTQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wMMYYKSgLj-UcEvMkZx57bIyu3gOi3UFoBfRg7bvgvY');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+      #my-image {
+        max-height: 150px;
+        animation: moveImage 5s ease-in-out infinite;
+      }
+
+      @keyframes moveImage {
+        0% {
+          transform: translate(0, 0);
+        }
+        25% {
+          transform: translate(50px, 0);
+        }
+        50% {
+          transform: translate(50px, 50px);
+        }
+        75% {
+          transform: translate(0, 50px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+    </style>
+  </head>
+  <body class="background">
+    <img
+      id="my-image"
+      src="https://static.wikia.nocookie.net/papermario/images/7/7b/OliviaArtwork.png/revision/latest?cb=20200514182142"
+      alt="My Image"
+    />
+  </body>
+
+  <script>
+    const image = document.getElementById('my-image')
+    image.style.position = 'absolute'
+
+    let posX = 0
+    let posY = 0
+    let velX = 0
+    let velY = 0
+
+    function chaseMouse(event) {
+      const mouseX = event.clientX
+      const mouseY = event.clientY
+
+      // Calculate the distance between the mouse and the image
+      const distX = mouseX - posX
+      const distY = mouseY - posY
+
+      // Calculate the acceleration based on the distance
+      const acceleration = 0.1
+      const accX = distX * acceleration
+      const accY = distY * acceleration
+
+      // Update the velocity
+      velX += accX
+      velY += accY
+
+      // Add deceleration
+      const deceleration = 0.9
+      velX *= deceleration
+      velY *= deceleration
+
+      // Update the position
+      posX += velX
+      posY += velY
+
+      // Update the image's CSS position
+      image.style.left = posX + 'px'
+      image.style.top = posY + 'px'
+    }
+
+    document.addEventListener('mousemove', chaseMouse)
+  </script>
+</html>
