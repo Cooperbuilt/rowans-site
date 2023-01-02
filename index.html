@@ -7,6 +7,7 @@
         width: 100%;
         overflow: hidden;
         cursor: url('https://i.ibb.co/4PKx5Nk/Paper-Mario-icon.png'), auto;
+        box-sizing: border-box;
       }
       .background {
         background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ea231e53-e17c-4265-83b5-552457fc0505/dctzcs7-bb9c81d2-9f6d-4004-9d90-79e068e78754.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VhMjMxZTUzLWUxN2MtNDI2NS04M2I1LTU1MjQ1N2ZjMDUwNVwvZGN0emNzNy1iYjljODFkMi05ZjZkLTQwMDQtOWQ5MC03OWUwNjhlNzg3NTQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wMMYYKSgLj-UcEvMkZx57bIyu3gOi3UFoBfRg7bvgvY');
@@ -14,9 +15,16 @@
         background-repeat: no-repeat;
         background-position: center center;
       }
+
       #my-image {
         max-height: 150px;
         animation: moveImage 5s ease-in-out infinite;
+      }
+
+      #second-image {
+        bottom: -20px;
+        position: absolute;
+        animation: slide 15s ease-in-out infinite;
       }
 
       @keyframes moveImage {
@@ -36,10 +44,22 @@
           transform: translate(0, 0);
         }
       }
+      @keyframes slide {
+        0% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
     </style>
   </head>
   <body class="background">
     <img id="my-image" src="OliviaArtwork-1.webp" alt="My Image" />
+    <img id="second-image" src="Bobby.webp" alt="bobby" />
   </body>
 
   <script>
